@@ -1,28 +1,28 @@
 library(MASS)                             
-library(class)                                  # knn–@‚ğŠÜ‚Şƒ‰ƒCƒuƒ‰ƒŠ
+library(class)                                  # knnæ³•ã‚’å«ã‚€ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
 
-path_data = "train.csv"
+path_data = "train.csv"                         # use kaggle MIST data( train.csv:73.22 MB )
 
-dfData <- read.csv( path_data ) # i³‰ğƒ‰ƒxƒ‹•t‚«‚Ìj42000l•ª‚Ìƒf[ƒ^
+dfData <- read.csv( path_data ) # ï¼ˆæ­£è§£ãƒ©ãƒ™ãƒ«ä»˜ãã®ï¼‰42000äººåˆ†ã®ãƒ‡ãƒ¼ã‚¿
 
-# ƒz[ƒ‹ƒhƒAƒEƒg–@ [hold-out method] ‚Åƒf[ƒ^•ªŠ„
+# ãƒ›ãƒ¼ãƒ«ãƒ‰ã‚¢ã‚¦ãƒˆæ³• [hold-out method] ã§ãƒ‡ãƒ¼ã‚¿åˆ†å‰²
 numData <- 1500
-matTrain <- data.matrix( dfData[1:numData,-1] )                 # ƒf[ƒ^‚©‚çŠwKƒf[ƒ^‚ğƒ‰ƒ“ƒ_ƒ€ƒTƒ“ƒvƒŠƒ“ƒO
-matTest  <- data.matrix( dfData[(numData+1):(2*numData),-1] )   # ƒf[ƒ^‚©‚çƒeƒXƒgƒf[ƒ^‚ğƒ‰ƒ“ƒ_ƒ€ƒTƒ“ƒvƒŠƒ“ƒO
-fTrainTeach <- factor( dfData[1:numData,1] )                    # ŠwKƒf[ƒ^‚Ì‹³tƒf[ƒ^
-fTestTeach  <- factor( dfData[(numData+1):(2*numData),1] )      # ƒeƒXƒgƒf[ƒ^‚Ì‹³tƒf[ƒ^
+matTrain <- data.matrix( dfData[1:numData,-1] )                 # ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰å­¦ç¿’ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°
+matTest  <- data.matrix( dfData[(numData+1):(2*numData),-1] )   # ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰ãƒ†ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã‚’ãƒ©ãƒ³ãƒ€ãƒ ã‚µãƒ³ãƒ—ãƒªãƒ³ã‚°
+fTrainTeach <- factor( dfData[1:numData,1] )                    # å­¦ç¿’ãƒ‡ãƒ¼ã‚¿ã®æ•™å¸«ãƒ‡ãƒ¼ã‚¿
+fTestTeach  <- factor( dfData[(numData+1):(2*numData),1] )      # ãƒ†ã‚¹ãƒˆãƒ‡ãƒ¼ã‚¿ã®æ•™å¸«ãƒ‡ãƒ¼ã‚¿
 
-# ƒf[ƒ^‚Ì‰æ‘œ‚ğƒq[ƒgƒ}ƒbƒv•\¦
-par( mfrow=c(20,20) )   # 20*20‰æ–Ê•\¦
-par( mar=c(0,0,0,0) )   # —]”’‚È‚µ
+# ãƒ‡ãƒ¼ã‚¿ã®ç”»åƒã‚’ãƒ’ãƒ¼ãƒˆãƒãƒƒãƒ—è¡¨ç¤º
+par( mfrow=c(20,20) )   # 20*20ç”»é¢è¡¨ç¤º
+par( mar=c(0,0,0,0) )   # ä½™ç™½ãªã—
 par( xaxt="n" )
 par( yaxt="n" )
 
 
-#i¦ŠÈ’P‚Ì‚½‚ßforƒ‹[ƒvg—pj
+#ï¼ˆâ€»ç°¡å˜ã®ãŸã‚forãƒ«ãƒ¼ãƒ—ä½¿ç”¨ï¼‰
 for ( i in 1:numData ) # plot train_data image
 {
-  matImage <- matrix( matTrain[i,], 28, 28 )      # ‚P‚Â‚Ì‰æ‘œ‚Í 28*28=784 ƒsƒNƒZƒ‹
+  matImage <- matrix( matTrain[i,], 28, 28 )      # ï¼‘ã¤ã®ç”»åƒã¯ 28*28=784 ãƒ”ã‚¯ã‚»ãƒ«
   image( matImage[,28:1] )
 }
 
@@ -30,29 +30,29 @@ for ( i in 1:numData ) # plot train_data image
 #par( yaxt="y" )
 #for ( i in 1:numData ) # plot test_data image
 #{
-#  matImage <- matrix( matTest[i,], 28, 28 )      # ‚P‚Â‚Ì‰æ‘œ‚Í 28*28=784 ƒsƒNƒZƒ‹
+#  matImage <- matrix( matTest[i,], 28, 28 )      # ï¼‘ã¤ã®ç”»åƒã¯ 28*28=784 ãƒ”ã‚¯ã‚»ãƒ«
 #  image( matImage[,28:1] )
 #}
 
-# ŠwKƒf[ƒ^‚Ì“Á’è‚Ì‰æ‘œ‚ğƒq[ƒgƒ}ƒbƒv•\¦
-#matImage <- matrix( matTrain[2,], 28, 28 )      # ‚P‚Â‚Ì‰æ‘œ‚Í 28*28=784 ƒsƒNƒZƒ‹
+# å­¦ç¿’ãƒ‡ãƒ¼ã‚¿ã®ç‰¹å®šã®ç”»åƒã‚’ãƒ’ãƒ¼ãƒˆãƒãƒƒãƒ—è¡¨ç¤º
+#matImage <- matrix( matTrain[2,], 28, 28 )      # ï¼‘ã¤ã®ç”»åƒã¯ 28*28=784 ãƒ”ã‚¯ã‚»ãƒ«
 #image( matImage[,28:1] )
 
 
-# ŠwKƒf[ƒ^‚Ì³‹K‰»
+# å­¦ç¿’ãƒ‡ãƒ¼ã‚¿ã®æ­£è¦åŒ–
 
 
-# ŠwKƒf[ƒ^‚ÌƒtƒBƒ‹ƒ^ƒŠƒ“ƒO
+# å­¦ç¿’ãƒ‡ãƒ¼ã‚¿ã®ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
 
 
-# Å‹ß–T–@ik=1j
-k <- 1    # knn–@‚Å k=1 ‚Ì‚Æ‚«‚ÍÅ‹ß–T–@
+# æœ€è¿‘å‚æ³•ï¼ˆk=1ï¼‰
+k <- 1    # knnæ³•ã§ k=1 ã®ã¨ãã¯æœ€è¿‘å‚æ³•
 result <- knn( matTrain,matTest,fTrainTeach,k,prob=TRUE )
 tblRes <- table( fTestTeach,result )
 print(tblRes)
 
 
-#Œë¯•Ê—¦‚Ì•\¦
+#èª¤è­˜åˆ¥ç‡ã®è¡¨ç¤º
 tblRes <- unclass(tblRes)
 errorRate <- (tblRes[1,1]+tblRes[2,2]+tblRes[3,3]+tblRes[4,4]+tblRes[5,5]+tblRes[6,6]+tblRes[7,7]+tblRes[8,8]+tblRes[9,9]+tblRes[10,10])
 errorRate <- 100-(errorRate/numData)*100
@@ -63,8 +63,8 @@ for( i in 1:length(errorRates) )
 {
   errorRates[i] <- (tblRes[i,i])/(tblRes[i,1]+tblRes[i,2]+tblRes[i,3]+tblRes[i,4]+tblRes[i,5]+tblRes[i,6]+tblRes[i,7]+tblRes[i,8]+tblRes[i,9]+tblRes[i,10])
   errorRates[i] <- 100-(errorRates[i]*100)
-  texts[i] <- paste( i-1,"F",errorRates[i],"%" )
+  texts[i] <- paste( i-1,"ï¼š",errorRates[i],"%" )
 }
 
-paste( "‘SŒë¯•Ê—¦F",errorRate,"%" )
+paste( "å…¨èª¤è­˜åˆ¥ç‡ï¼š",errorRate,"%" )
 print( texts )
