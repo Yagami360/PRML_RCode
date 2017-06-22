@@ -3,14 +3,14 @@
 
 # expand lib on memory
 library( MASS )   # MASS package
-library( jpeg )   # jpeg‰æ‘œ‚Ì“Ç‚İ‚İ
+library( jpeg )   # jpegç”»åƒã®èª­ã¿è¾¼ã¿
 
 # set options
-options( digits=7 ) # •\¦Œ…”
+options( digits=7 ) # è¡¨ç¤ºæ¡æ•°
 
 # load image data (jpeg)
 jpeg_NekoSensei <- readJPEG( "nekosensei_greyscale.jpg" ) # 560*420 = 235200 pixel(3data<rgb> per 1 pixel)
-class( jpeg_NekoSensei )      # 3ŸŒ³”z—ñ um[1:420, 1:560, 1:3]
+class( jpeg_NekoSensei )      # 3æ¬¡å…ƒé…åˆ— um[1:420, 1:560, 1:3]
 attributes( jpeg_NekoSensei )
 
 ########################################
@@ -25,8 +25,8 @@ dat_levels <- c(
 dat_lda <- lda( dat_levels ~ . , data = dfNekoSensei )
 print( dat_lda )
 
-# üŒ`”»•ÊŒW” [coefficients of linear discriminants] ‚©‚çüŒ`¯•ÊŠÖ”‚ğ‹‚ß‚é
-linerC <- apply( dat_lda$means%*%dat_lda$scaling, 2, mean ) # ’è”€C
+# ç·šå½¢åˆ¤åˆ¥ä¿‚æ•° [coefficients of linear discriminants] ã‹ã‚‰ç·šå½¢è­˜åˆ¥é–¢æ•°ã‚’æ±‚ã‚ã‚‹
+linerC <- apply( dat_lda$means%*%dat_lda$scaling, 2, mean ) # å®šæ•°é …C
 cat("\nConstant term:\n")
 print(linerC)
 
@@ -46,6 +46,7 @@ imgNekosensei2 <- array(
   dim = c(420,560,3)
 )
 
+# ãƒã‚¤ãƒŠãƒªå€¤ã«å¤‰æ›ï¼ˆç°¡å˜ã®ãŸã‚forãƒ«ãƒ¼ãƒ—ä½¿ç”¨ï¼‰
 for( i in 1:length(imgNekosensei) )
 {
   if( result$class[i] == 1 )
@@ -63,19 +64,19 @@ for( i in 1:length(imgNekosensei) )
 ############################
 # set graphics parameters  #
 ############################
-# ²‚ÉŠÖ‚µ‚Ä‚Ìƒf[ƒ^ƒŠƒXƒg
+# è»¸ã«é–¢ã—ã¦ã®ãƒ‡ãƒ¼ã‚¿ãƒªã‚¹ãƒˆ
 lstAxis <- list(                        
-  xMin = 0.0, xMax = 1.0,  # x²‚ÌÅ¬’lAÅ‘å’l
-  yMin = 0.0, yMax = 1.0,  # y²‚ÌÅ¬’lAÅ‘å’l
-  zMin = 0.0, zMax = 1.0,  # z²‚ÌÅ¬’lAÅ‘å’l
+  xMin = 0.0, xMax = 1.0,  # xè»¸ã®æœ€å°å€¤ã€æœ€å¤§å€¤
+  yMin = 0.0, yMax = 1.0,  # yè»¸ã®æœ€å°å€¤ã€æœ€å¤§å€¤
+  zMin = 0.0, zMax = 1.0,  # zè»¸ã®æœ€å°å€¤ã€æœ€å¤§å€¤
   xlim = range( c(0.0, 1.0) ), 
   ylim = range( c(0.0, 1.0) ), 
   zlim = range( c(0.0, 1.0) ),
-  mainTitle = "mainTitle", # }‚ÌƒƒCƒ“ƒ^ƒCƒgƒ‹i}‚Ìãj
-  subTitle  = "subTitle",  # }‚ÌƒTƒuƒ^ƒCƒgƒ‹i}‚Ì‰ºj
-  xlab      = "x", # x²‚Ì–¼‘O
-  ylab      = "y", # y²‚Ì–¼‘O
-  zlab      = "z"  # z²‚Ì–¼‘O
+  mainTitle = "mainTitle", # å›³ã®ãƒ¡ã‚¤ãƒ³ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆå›³ã®ä¸Šï¼‰
+  subTitle  = "subTitle",  # å›³ã®ã‚µãƒ–ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆå›³ã®ä¸‹ï¼‰
+  xlab      = "x", # xè»¸ã®åå‰
+  ylab      = "y", # yè»¸ã®åå‰
+  zlab      = "z"  # zè»¸ã®åå‰
 )
 lstAxis$xMin <- 0
 lstAxis$xMax <- 560
@@ -86,7 +87,7 @@ lstAxis$ylim = range( c(lstAxis$yMin, lstAxis$yMax) )
 lstAxis$zlim = range( c(lstAxis$zMin, lstAxis$zMax) )
 lstAxis$xlab <- "x1"
 lstAxis$ylab <- "x2"
-lstAxis$mainTitle <- "‚Ë‚±æ¶iƒOƒŒ[ƒXƒP[ƒ‹j[Greyscale]" # }‚ÌƒƒCƒ“ƒ^ƒCƒgƒ‹i}‚Ìãj
+lstAxis$mainTitle <- "ã­ã“å…ˆç”Ÿï¼ˆã‚°ãƒ¬ãƒ¼ã‚¹ã‚±ãƒ¼ãƒ«ï¼‰[Greyscale]" # å›³ã®ãƒ¡ã‚¤ãƒ³ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆå›³ã®ä¸Šï¼‰
 
 # plot frame only
 par(new=F)
@@ -96,7 +97,7 @@ plot( c(), type='n',
       xlim=lstAxis$xlim, ylim=lstAxis$ylim,
       xlab=lstAxis$xlab, ylab=lstAxis$ylab
 )
-#grid() #ƒOƒŠƒbƒhü‚ğ’Ç‰Á
+#grid() #ã‚°ãƒªãƒƒãƒ‰ç·šã‚’è¿½åŠ 
 
 ############################
 # Draw Image and figure    #
@@ -109,26 +110,26 @@ rasterImage(
 )
 
 # draw converted image
-lstAxis$mainTitle <- "‚Ë‚±æ¶i‚Q’l‰»ˆ—Œãj"  # }‚ÌƒƒCƒ“ƒ^ƒCƒgƒ‹i}‚Ìãj
+lstAxis$mainTitle <- "ã­ã“å…ˆç”Ÿï¼ˆï¼’å€¤åŒ–å‡¦ç†å¾Œï¼‰"  # å›³ã®ãƒ¡ã‚¤ãƒ³ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆå›³ã®ä¸Šï¼‰
 plot( c(), type='n',
       main = lstAxis$mainTitle,
       xlim=lstAxis$xlim, ylim=lstAxis$ylim,
       xlab=lstAxis$xlab, ylab=lstAxis$ylab
 )
 rasterImage(
-  image = imgNekosensei1, # •ÏŠ·Œã‚Ìƒf[ƒ^
+  image = imgNekosensei1, # å¤‰æ›å¾Œã®ãƒ‡ãƒ¼ã‚¿
   xleft = lstAxis$xMin, xright = lstAxis$xMax, 
   ybottom = lstAxis$yMin, ytop = lstAxis$yMax
 )
 
-lstAxis$mainTitle <- "‚Ë‚±æ¶i‚Q’l‰»ˆ—Œãƒ”½“]„j"  # }‚ÌƒƒCƒ“ƒ^ƒCƒgƒ‹i}‚Ìãj
+lstAxis$mainTitle <- "ã­ã“å…ˆç”Ÿï¼ˆï¼’å€¤åŒ–å‡¦ç†å¾Œï¼œåè»¢ï¼ï¼‰"  # å›³ã®ãƒ¡ã‚¤ãƒ³ã‚¿ã‚¤ãƒˆãƒ«ï¼ˆå›³ã®ä¸Šï¼‰
 plot( c(), type='n',
       main = lstAxis$mainTitle,
       xlim=lstAxis$xlim, ylim=lstAxis$ylim,
       xlab=lstAxis$xlab, ylab=lstAxis$ylab
 )
 rasterImage(
-  image = imgNekosensei2, # •ÏŠ·Œã‚Ìƒf[ƒ^
+  image = imgNekosensei2, # å¤‰æ›å¾Œã®ãƒ‡ãƒ¼ã‚¿
   xleft = lstAxis$xMin, xright = lstAxis$xMax, 
   ybottom = lstAxis$yMin, ytop = lstAxis$yMax
 )
