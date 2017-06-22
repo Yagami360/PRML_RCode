@@ -12,4 +12,6 @@ Example_6_3：R実行例 6.3 (P87~88) サンプルRコード
 
 Example_6_4：R実行例 6.4 (P93~95) サンプルRコード
 
+NormalDistribution1.R,NormalDistribution2.R : 正規分布関数に関して(https://github.com/Yagami360/PRML_RCode/issues/2)
+
 ROC1.R, ROC2.R, ROC3.R : ROC曲線について(https://github.com/Yagami360/PRML_RCode/issues/1)
