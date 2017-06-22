@@ -1,19 +1,22 @@
+################################
+# æ­£è¦åˆ†å¸ƒé–¢æ•°ã®ï¼“æ¬¡å…ƒå›³ã§ã®æå†™   #
+################################
 #options( repos="http://cran.ism.ac.jp" )
 #install.packages( 'mvtnorm' )
 #install.packages( 'scatterplot3d' )
 
-library(mvtnorm)                             # ‘½•Ï—Ê³‹K•ª•z‚ğˆµ‚¤
-library(scatterplot3d)                       # scatterplot3dŠÖ”‚ğg—p
+library(mvtnorm)                             # å¤šå¤‰é‡æ­£è¦åˆ†å¸ƒã‚’æ‰±ã†
+library(scatterplot3d)                       # scatterplot3dé–¢æ•°ã‚’ä½¿ç”¨
 
-dfAxis <- data.frame(                        # ²‚ÉŠÖ‚µ‚Ä‚Ìƒf[ƒ^
-  xMin = -5.0, xMax = 5.0,                   # x²‚ÌÅ¬’lAÅ‘å’l
-  yMin = -5.0, yMax = 5.0                    # y²‚ÌÅ¬’lAÅ‘å’l
+dfAxis <- data.frame(                        # è»¸ã«é–¢ã—ã¦ã®ãƒ‡ãƒ¼ã‚¿
+  xMin = -5.0, xMax = 5.0,                   # xè»¸ã®æœ€å°å€¤ã€æœ€å¤§å€¤
+  yMin = -5.0, yMax = 5.0                    # yè»¸ã®æœ€å°å€¤ã€æœ€å¤§å€¤
 )
 
-datX1 <- seq( from=-3.0, to=5.0, by=0.20 )   # x1²‚Ì’lƒxƒNƒgƒ‹
-datX2 <- seq( from=-3.0, to=5.0, by=0.20 )   # x2²‚Ì’lƒxƒNƒgƒ‹
-datU <- c( 2.0, 1.0 )                        # •½‹Ï’lƒxƒNƒgƒ‹
-matS <- matrix(                              # ‹¤•ªU•ªUs—ñ
+datX1 <- seq( from=-3.0, to=5.0, by=0.20 )   # x1è»¸ã®å€¤ãƒ™ã‚¯ãƒˆãƒ«
+datX2 <- seq( from=-3.0, to=5.0, by=0.20 )   # x2è»¸ã®å€¤ãƒ™ã‚¯ãƒˆãƒ«
+datU <- c( 2.0, 1.0 )                        # å¹³å‡å€¤ãƒ™ã‚¯ãƒˆãƒ«
+matS <- matrix(                              # å…±åˆ†æ•£åˆ†æ•£è¡Œåˆ—
   data = c( 0.7, 0.5, 0.5, 2.0 ),
   nrow = 2, ncol = 2 
 )
@@ -29,11 +32,11 @@ funcNormDim2 <- function( x1, x2 )
   ) 
 }
 
-dfNorm <- data.frame( x1=datX1, x2=datX2, z=0 )         # ƒf[ƒ^ƒtƒŒ[ƒ€‚É‚Ü‚Æ‚ß‚é
-dfNorm$z <- outer(dfNorm$x1, dfNorm$x2, funcNormDim2)   # x1‚Æx2‚ÌŠOÏ‚Åc²¬•ª‚ğ‹‚ß‚é
+dfNorm <- data.frame( x1=datX1, x2=datX2, z=0 )         # ãƒ‡ãƒ¼ã‚¿ãƒ•ãƒ¬ãƒ¼ãƒ ã«ã¾ã¨ã‚ã‚‹
+dfNorm$z <- outer(dfNorm$x1, dfNorm$x2, funcNormDim2)   # x1ã¨x2ã®å¤–ç©ã§ç¸¦è»¸æˆåˆ†ã‚’æ±‚ã‚ã‚‹
 
-numRam <- 1000                                         # —”‚Ì”
-datRNorm <- rmvnorm( n=numRam, mean=datU, sigma=matS )  # 2ŸŒ³‚Ì³‹K•ª•z‚ÉŠî‚Ã‚­—”¶¬
+numRam <- 1000                                         # ä¹±æ•°ã®æ•°
+datRNorm <- rmvnorm( n=numRam, mean=datU, sigma=matS )  # 2æ¬¡å…ƒã®æ­£è¦åˆ†å¸ƒã«åŸºã¥ãä¹±æ•°ç”Ÿæˆ
 dfRNorm <- data.frame(
   x1 = datRNorm[,1],
   x2 = datRNorm[,2],
@@ -45,7 +48,7 @@ dfRNorm <- data.frame(
 ############################
 par( mfrow=c(1,1) )
 
-title <- "³‹K•ª•zŠÖ”i‚Q•Ï”j"
+title <- "æ­£è¦åˆ†å¸ƒé–¢æ•°ï¼ˆï¼’å¤‰æ•°ï¼‰"
 xlim <- range( c(dfAxis$xMin, dfAxis$xMax) )
 ylim <- range( c(dfAxis$yMin, dfAxis$yMax) )
 xlab <- "x1"
@@ -55,7 +58,7 @@ zlab <- "probability"
 ############################
 # Draw in dim3 figure      #
 ############################
-#win.graph() # •Ê‚Ì‚ÌƒOƒ‰ƒtƒBƒbƒNƒEƒCƒ“ƒhƒE‚Éì}
+#win.graph() # åˆ¥ã®ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«ä½œå›³
 persp(
   x = dfNorm$x1, y = dfNorm$x2, z = dfNorm$z, 
   theta = 20, phi = 20, expand = 0.5,
@@ -65,7 +68,7 @@ persp(
   col = "lightblue"
 )
 
-#win.graph() # •Ê‚Ì‚ÌƒOƒ‰ƒtƒBƒbƒNƒEƒCƒ“ƒhƒE‚Éì}
+#win.graph() # åˆ¥ã®ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«ä½œå›³
 scatterplot3d(
   x = dfRNorm$x1, y = dfRNorm$x2, z = dfRNorm$z,
   main = title,
@@ -77,7 +80,7 @@ scatterplot3d(
 ############################
 # Draw in dim2 figure      #
 ############################
-# —”‚Ìplot
+# ä¹±æ•°ã®plot
 #plot( 
 #  dfRNorm,
 #  main = title,
@@ -87,10 +90,10 @@ scatterplot3d(
 #)
 #grid()
 
-# ’†‰›üi•½‹Ï’lj‚Ì’¼ü’Ç‰Á
+# ä¸­å¤®ç·šï¼ˆå¹³å‡å€¤ï¼‰ã®ç›´ç·šè¿½åŠ 
 #abline( v = datU[1], h = datU[2], lty = "dotdash" )
 
-# “™‚ü‚Ìplot’Ç‰Á
+# ç­‰é«˜ç·šã®plotè¿½åŠ 
 #par(new=T)
 #plot(
 #  dfNorm$x1[500:1000], dfNorm$x2[500:1000],
@@ -103,6 +106,6 @@ scatterplot3d(
 #contour(
 #  x = dfNorm$x1,
 #  y = dfNorm$x2,
-#  z = z,  # s—ñ‚É•ÏŠ·
+#  z = z,  # è¡Œåˆ—ã«å¤‰æ›
 #  nlevels = 1
 #)
