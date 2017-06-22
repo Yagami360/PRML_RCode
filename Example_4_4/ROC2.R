@@ -7,32 +7,32 @@ yMin <- 0.0
 yMax <- 1.5
 datX <- seq( from=xMin, to=xMax, by=0.01 )
 
-# Šm—¦•ª•z‚Ìd‚È‚è–³‚µ
+# ç¢ºçŽ‡åˆ†å¸ƒã®é‡ãªã‚Šç„¡ã—
 dfDNorm1_1 <- data.frame( x=datX, y=dnorm( x=datX, mean=1.0, sd=0.3 ) )
 dfDNorm1_2 <- data.frame( x=datX, y=dnorm( x=datX, mean=7.0, sd=0.8 ) )
 
-# Šm—¦•ª•z‚Ìd‚È‚è—L‚è‚P
+# ç¢ºçŽ‡åˆ†å¸ƒã®é‡ãªã‚Šæœ‰ã‚Šï¼‘
 dfDNorm2_1 <- data.frame( x=datX, y=dnorm( x=datX, mean=5.0, sd=0.3 ) )
 dfDNorm2_2 <- data.frame( x=datX, y=dnorm( x=datX, mean=7.0, sd=0.8 ) )
 
-# Šm—¦•ª•z‚Ìd‚È‚è—L‚è‚Q
+# ç¢ºçŽ‡åˆ†å¸ƒã®é‡ãªã‚Šæœ‰ã‚Šï¼’
 dfDNorm3_1 <- data.frame( x=datX, y=dnorm( x=datX, mean=6.0, sd=0.3 ) )
 dfDNorm3_2 <- data.frame( x=datX, y=dnorm( x=datX, mean=7.0, sd=0.8 ) )
 
-# Šm—¦•ª•z‚Ì•½‹Ï’lˆê’v
+# ç¢ºçŽ‡åˆ†å¸ƒã®å¹³å‡å€¤ä¸€è‡´
 dfDNorm4_1 <- data.frame( x=datX, y=dnorm( x=datX, mean=7.0, sd=0.3 ) )
 dfDNorm4_2 <- data.frame( x=datX, y=dnorm( x=datX, mean=7.0, sd=0.8 ) )
 
 
 # set graphics parameters
-par( mfrow=c(2,2) )   # 2*2‰æ–Ê•\Ž¦
+par( mfrow=c(2,2) )   # 2*2ç”»é¢è¡¨ç¤º
 #par( xaxt="n" )
 par( yaxt="n" )
 par( lwd = 1.0 )
 
-title <- "—z«‚Æ‰A«‚ÌƒNƒ‰ƒXŠm—¦•ª•zid‚È‚è—Ìˆæ—L‚èj"
+title <- "é™½æ€§ã¨é™°æ€§ã®ã‚¯ãƒ©ã‚¹ç¢ºçŽ‡åˆ†å¸ƒï¼ˆé‡ãªã‚Šé ˜åŸŸæœ‰ã‚Šï¼‰"
 xlab <- "x"
-ylab <- "–Þ“x[likelihood]"
+ylab <- "å°¤åº¦[likelihood]"
 xlim <- range( c(xMin,xMax) )
 ylim <- range( c(yMin,yMax) )
 col1 <- "red"
@@ -41,7 +41,7 @@ col2 <- "blue"
 #-----------------------------------------
 # plot density functions
 #-----------------------------------------
-title1 <- "d‚È‚è—Ìˆæ–³‚µ"
+title1 <- "é‡ãªã‚Šé ˜åŸŸç„¡ã—"
 plot( dfDNorm1_1,
       main = title1,
       xlab = xlab, ylab = ylab,
@@ -59,7 +59,7 @@ plot( dfDNorm1_2,
 )
 grid()
 #-----------------------------------------
-title2 <- "d‚È‚è—Ìˆæ—L‚è‚P"
+title2 <- "é‡ãªã‚Šé ˜åŸŸæœ‰ã‚Šï¼‘"
 plot( dfDNorm2_1,
       main = title2,
       xlab = xlab, ylab = ylab,
@@ -77,7 +77,7 @@ plot( dfDNorm2_2,
 )
 grid()
 #-----------------------------------------
-title3 <- "d‚È‚è—Ìˆæ—L‚è‚Q"
+title3 <- "é‡ãªã‚Šé ˜åŸŸæœ‰ã‚Šï¼’"
 plot( dfDNorm3_1,
       main = title3,
       xlab = xlab, ylab = ylab,
@@ -95,7 +95,7 @@ plot( dfDNorm3_2,
 )
 grid()
 #-----------------------------------------
-title4 <- "•½‹Ï’lˆê’v"
+title4 <- "å¹³å‡å€¤ä¸€è‡´"
 plot( dfDNorm4_1,
       main = title4,
       xlab = xlab, ylab = ylab,
@@ -121,7 +121,7 @@ xMin <- 0.0
 xMax <- 1.0
 yMin <- 0.0
 yMax <- 1.01
-dat <- seq( from=0.0, to=10.0, by=0.01 ) # Ž¯•Ê‹«ŠEi0¨10 ‚ÉˆÚ“®‚³‚¹‚éj
+dat <- seq( from=0.0, to=10.0, by=0.01 ) # è­˜åˆ¥å¢ƒç•Œï¼ˆ0â†’10 ã«ç§»å‹•ã•ã›ã‚‹ï¼‰
 
 dfROC1 <- data.frame( 
   sigma1 = pnorm( q=dat, mean=1.0, sd=0.3, lower.tail=TRUE ),
@@ -144,22 +144,22 @@ dfROC4 <- data.frame(
 )
 
 # set graphics parameters
-#win.graph()           # 2–‡–Ú‚ÌƒOƒ‰ƒtƒBƒbƒNƒEƒCƒ“ƒhƒE‚Éì}
-par( mfrow=c(2,2) )   # 2*2‰æ–Ê•\Ž¦
+#win.graph()           # 2æžšç›®ã®ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯ã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã«ä½œå›³
+par( mfrow=c(2,2) )   # 2*2ç”»é¢è¡¨ç¤º
 par( xaxt="s" )
 par( yaxt="s" )
 par( lwd = 2 )
 
-titleROC <- "ROC‹Èü [ROC Curve]"
-xlab <- "‹U—z«—¦ [false positive rate]"
-ylab <- "^—z«—¦ [true positive rate]"
+titleROC <- "ROCæ›²ç·š [ROC Curve]"
+xlab <- "å½é™½æ€§çŽ‡ [false positive rate]"
+ylab <- "çœŸé™½æ€§çŽ‡ [true positive rate]"
 xlim <- range( c(xMin,xMax) )
 ylim <- range( c(yMin,yMax) )
 
 #----------------------------------------
 # plot ROC Curve
 #----------------------------------------
-titleROC1 <- "d‚È‚è—Ìˆæ‚È‚µ"
+titleROC1 <- "é‡ãªã‚Šé ˜åŸŸãªã—"
 plot( dfROC1$sigma2, dfROC1$sigma1,
       main = titleROC1,
       xlab = xlab, ylab = ylab,
@@ -168,7 +168,7 @@ plot( dfROC1$sigma2, dfROC1$sigma1,
 )
 grid()
 #---------------------------------------
-titleROC2 <- "d‚È‚è—Ìˆæ‚ ‚è‚P"
+titleROC2 <- "é‡ãªã‚Šé ˜åŸŸã‚ã‚Šï¼‘"
 plot( dfROC2$sigma2, dfROC2$sigma1,
       main = titleROC2,
       xlab = xlab, ylab = ylab,
@@ -177,7 +177,7 @@ plot( dfROC2$sigma2, dfROC2$sigma1,
 )
 grid()
 #---------------------------------------
-titleROC3 <- "d‚È‚è—Ìˆæ‚ ‚è‚Q"
+titleROC3 <- "é‡ãªã‚Šé ˜åŸŸã‚ã‚Šï¼’"
 plot( dfROC3$sigma2, dfROC3$sigma1,
       main = titleROC3,
       xlab = xlab, ylab = ylab,
@@ -186,7 +186,7 @@ plot( dfROC3$sigma2, dfROC3$sigma1,
 )
 grid()
 #---------------------------------------
-titleROC4 <- "•½‹Ï’lˆê’v"
+titleROC4 <- "å¹³å‡å€¤ä¸€è‡´"
 plot( dfROC4$sigma2, dfROC4$sigma1,
       main = titleROC4,
       xlab = xlab, ylab = ylab,
@@ -194,17 +194,3 @@ plot( dfROC4$sigma2, dfROC4$sigma1,
       type = "l"      
 )
 grid()
-
-#############################
-# AUC                       #
-#############################
-
-# calc AUC Value
-
-# plot AUC Value
-
-
-#############################
-# ‘¹Ž¸’¼ü [loss line]      #
-#############################
-
