@@ -1,35 +1,38 @@
+############################
+# æ­£è¦åˆ†å¸ƒé–¢æ•°ã®æå†™         #
+############################
 xMin <- -20
 xMax <- 20
 yMin <- 0
 yMax <- 0.25
 dat <- seq( from=-20.0, to=20.0, by=0.01 )
-numRam <- 25  # —”‚Ì”
+numRam <- 25  # ä¹±æ•°ã®æ•°
 
 dfDNorm1 <- data.frame( x=dat, y=dnorm( x=dat, mean=0.0, sd=2.0 ) )
-dfRNorm1 <- data.frame( x=rnorm( n=numRam, mean=0, sd=2 ), y=0.0  )   # ³‹K•ª•z‚ÉŠî‚Ã‚­—”¶¬
+dfRNorm1 <- data.frame( x=rnorm( n=numRam, mean=0, sd=2 ), y=0.0  )   # æ­£è¦åˆ†å¸ƒã«åŸºã¥ãä¹±æ•°ç”Ÿæˆ
 dfRNorm1$y <- dnorm( x=dfRNorm1$x, mean=0.0, sd=2.0 )
 
 dfDNorm2 <- data.frame( x=dat, y=dnorm( x=dat, mean=10.0, sd=2.0 ) )
-dfRNorm2 <- data.frame( x=rnorm( n=numRam, mean=10, sd=2 ), y=0.0  )   # ³‹K•ª•z‚ÉŠî‚Ã‚­—”¶¬
+dfRNorm2 <- data.frame( x=rnorm( n=numRam, mean=10, sd=2 ), y=0.0  )   # æ­£è¦åˆ†å¸ƒã«åŸºã¥ãä¹±æ•°ç”Ÿæˆ
 dfRNorm2$y <- dnorm( x=dfRNorm2$x, mean=10.0, sd=2.0 )
 
 dfDNorm3 <- data.frame( x=dat, y=dnorm( x=dat, mean=0.0, sd=4.0 ) )
-dfRNorm3 <- data.frame( x=rnorm( n=numRam, mean=0, sd=4 ), y=0.0  )   # ³‹K•ª•z‚ÉŠî‚Ã‚­—”¶¬
+dfRNorm3 <- data.frame( x=rnorm( n=numRam, mean=0, sd=4 ), y=0.0  )   # æ­£è¦åˆ†å¸ƒã«åŸºã¥ãä¹±æ•°ç”Ÿæˆ
 dfRNorm3$y <- dnorm( x=dfRNorm3$x, mean=0.0, sd=4.0 )
 
 dfDNorm4 <- data.frame( x=dat, y=dnorm( x=dat, mean=0.0, sd=8.0 ) )
-dfRNorm4 <- data.frame( x=rnorm( n=numRam, mean=0, sd=8 ), y=0.0  )   # ³‹K•ª•z‚ÉŠî‚Ã‚­—”¶¬
+dfRNorm4 <- data.frame( x=rnorm( n=numRam, mean=0, sd=8 ), y=0.0  )   # æ­£è¦åˆ†å¸ƒã«åŸºã¥ãä¹±æ•°ç”Ÿæˆ
 dfRNorm4$y <- dnorm( x=dfRNorm4$x, mean=0.0, sd=8.0 )
 
 # set graphics parameters
-par( mfrow=c(2,2) )   # 2*2‰æ–Ê•\Ž¦
+par( mfrow=c(2,2) )   # 2*2ç”»é¢è¡¨ç¤º
 
-title1 <- "ƒÊ=0.0, ƒÐ=2.0"
-title2 <- "ƒÊ=10.0, ƒÐ=2.0"
-title3 <- "ƒÊ=0.0, ƒÐ=4.0"
-title4 <- "ƒÊ=0.0, ƒÐ=8.0"
+title1 <- "Î¼=0.0, Ïƒ=2.0"
+title2 <- "Î¼=10.0, Ïƒ=2.0"
+title3 <- "Î¼=0.0, Ïƒ=4.0"
+title4 <- "Î¼=0.0, Ïƒ=8.0"
 xlab <- "x"
-ylab <- "Šm—¦ [probability]"
+ylab <- "ç¢ºçŽ‡ [probability]"
 xlim <- range( c(xMin,xMax) )
 ylim <- range( c(yMin,yMax) )
 
@@ -41,7 +44,7 @@ plot(
       xlim = xlim, ylim = ylim,
       type = "l"      
 )
-grid()  # }‚ÉƒOƒŠƒbƒhü‚ð’Ç‰Á
+grid()  # å›³ã«ã‚°ãƒªãƒƒãƒ‰ç·šã‚’è¿½åŠ 
 par(new=T)
 plot(
   dfRNorm1,
@@ -59,7 +62,7 @@ plot(
   xlim = xlim, ylim = ylim,
   type = "l"      
 )
-grid()  # }‚ÉƒOƒŠƒbƒhü‚ð’Ç‰Á
+grid()  # å›³ã«ã‚°ãƒªãƒƒãƒ‰ç·šã‚’è¿½åŠ 
 par(new=T)
 plot(
   dfRNorm2,
@@ -77,7 +80,7 @@ plot(
   xlim = xlim, ylim = ylim,
   type = "l"      
 )
-grid()  # }‚ÉƒOƒŠƒbƒhü‚ð’Ç‰Á
+grid()  # å›³ã«ã‚°ãƒªãƒƒãƒ‰ç·šã‚’è¿½åŠ 
 par(new=T)
 plot(
   dfRNorm3,
@@ -95,7 +98,7 @@ plot(
   xlim = xlim, ylim = ylim,
   type = "l"      
 )
-grid()  # }‚ÉƒOƒŠƒbƒhü‚ð’Ç‰Á
+grid()  # å›³ã«ã‚°ãƒªãƒƒãƒ‰ç·šã‚’è¿½åŠ 
 par(new=T)
 plot(
   dfRNorm4,
