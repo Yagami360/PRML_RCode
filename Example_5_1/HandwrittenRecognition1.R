@@ -2,6 +2,7 @@ library(MASS)
 library(class)                                  # knn法を含むライブラリ
 
 path_data = "train.csv"                         # use kaggle MIST data( train.csv:73.22 MB )
+                                                # URL:https://www.kaggle.com/c/digit-recognizer/data
 
 dfData <- read.csv( path_data ) # （正解ラベル付きの）42000人分のデータ
 
