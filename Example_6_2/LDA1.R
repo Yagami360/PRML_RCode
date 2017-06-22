@@ -47,7 +47,7 @@ imgNekosensei2 <- array(
 )
 
 # バイナリ値に変換（簡単のためforループ使用）
-for( i in 1:length(imgNekosensei) )
+for( i in 1:length(imgNekosensei1) )
 {
   if( result$class[i] == 1 )
   {
